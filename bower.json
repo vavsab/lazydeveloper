@@ -1,0 +1,23 @@
+{
+  "name": "fastdeploy",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "ivan.sabelnikov <ivan.sabelnikov@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/vavsab/lazydeveloper",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "metro": "metro-ui-css#^3.0.17"
+  }
+}

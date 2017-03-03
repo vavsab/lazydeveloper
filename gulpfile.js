@@ -2,8 +2,10 @@ var gulp = require('gulp');
 var gulpCopy = require('gulp-copy');
 var es = require('event-stream');
 var clean = require('gulp-clean');
+var ts = require('gulp-typescript');
+var runSequence = require('run-sequence');
 
-gulp.task('default', [ 'copyJsCss' ]);
+gulp.task('default', [ 'copyJsCss', 'angular' ]);
 
 gulp.task('clean', function () {
     return gulp.src(['libs', 'build'])
@@ -35,16 +37,22 @@ gulp.task('copyJsCss', ['clean'], function(){
      return es.merge(jquery, metro, fontAwesome, bootstrap);
 });
 
-gulp.task('angular', ['clean'], function () {
-    let copy = gulp.src(['./angular'])
+gulp.task('angular', ['clean'], function (cb) {
+    return runSequence('angular.copy', 'angular.build', 'angular.clean', cb);
+});
+
+gulp.task('angular.copy', function () {
+    return gulp.src(['./angular/**'])
         .pipe(gulpCopy('./build', {prefix: 1}));
-    
-    let typescript = gulp.src('build/**/*.ts')
+});
+
+gulp.task('angular.build', function () {
+    return gulp.src('./build/**/*.ts')
         .pipe(ts())
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest('./build/'));
+});
 
-    let clean = gulp.src(['build/**/*.ts'])
+gulp.task('angular.clean', function () {
+    return gulp.src(['./build/**/*.ts'])
         .pipe(clean());
-
-    return es.merge(copy, typescript, clean);
 });
