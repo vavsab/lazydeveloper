@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, protocol} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -12,7 +12,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'angular/index.html'),
     protocol: 'file:',
     slashes: true
   }))

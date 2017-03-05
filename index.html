@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <script>window.$ = window.jQuery = require('./libs/jquery/jquery.min');</script>
-    <link href="./libs/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="./libs/metro/css/metro.min.css" rel="stylesheet">
-    <script src="./libs/metro/js/metro.min.js"></script>
-    <link href="./libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
-    <link href="./css/style.css" rel="stylesheet">
+    <script>window.$ = window.jQuery = require('./build/libs/jquery/jquery.min');</script>
+    <link href="./build/libs/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="./build/libs/metro/css/metro.min.css" rel="stylesheet">
+    <script src="./build/libs/metro/js/metro.min.js"></script>
+    <link href="./build/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./build/libs/bootstrap/js/bootstrap.min.js"></script>
+    <link href="./build/css/style.css" rel="stylesheet">
     <title>Hello World!</title>
   </head>
   <body>
@@ -47,5 +47,8 @@
             </div>
         </div>
     </div>
+
+    <script>document.write(process.cwd())</script>
+    <script>document.write(process.resourcesPath)</script>
   </body>
 </html>

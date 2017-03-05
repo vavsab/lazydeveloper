@@ -2,24 +2,36 @@
 <html>
   <head>
     <title>Angular QuickStart</title>
-    <base href="/">
     <meta charset="UTF-8">
+    <base href="./">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="libs/core-js/shim.min.js"></script>
 
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="libs/zone.js/zone.js"></script>
+    <script src="libs/systemjs/system.src.js"></script>
 
     <script src="systemjs.config.js"></script>
     <script>
+      System.import('libs/jquery').then(function (jquery) {
+        window.$ = window.jQuery = jquery;
+        System.import('libs/metro');
+        System.import('libs/bootstrap');
+      });
+
       System.import('main.js').catch(function(err){ console.error(err); });
     </script>
+
+    <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="libs/metro/css/metro.min.css" rel="stylesheet">
+    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
   </head>
 
   <body>
-    <my-app>Loading AppComponent content here ...</my-app>
+    <app-component>Loading...</app-component>
   </body>
 </html>

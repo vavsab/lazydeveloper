@@ -6,7 +6,8 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': './../node_modules/',
+      'lib:': './libs/'
     },
     // map tells the System loader where to look for things
     map: {
@@ -25,7 +26,11 @@
 
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+
+      'libs/bootstrap': 'lib:bootstrap/js/bootstrap.min.js',
+      'libs/jquery': 'lib:jquery/jquery.min.js',
+      'libs/metro': 'lib:metro/js/metro.min.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
