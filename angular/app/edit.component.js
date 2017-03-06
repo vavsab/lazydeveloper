@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var script_service_1 = require("./script.service");
 var EditComponent = (function () {
-    function EditComponent(router) {
+    function EditComponent(router, scriptService) {
         this.router = router;
-        this.name = 'Edit';
+        this.scriptService = scriptService;
+        this.name = this.scriptService.value;
     }
     EditComponent.prototype.save = function () {
         this.router.navigate(['/']);
@@ -25,6 +27,7 @@ EditComponent = __decorate([
     core_1.Component({
         templateUrl: 'views/edit.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router,
+        script_service_1.ScriptService])
 ], EditComponent);
 exports.EditComponent = EditComponent;

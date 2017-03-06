@@ -11,18 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var script_service_1 = require("./script.service");
 var TilesComponent = (function () {
-    function TilesComponent(router) {
+    function TilesComponent(router, scriptService) {
         this.router = router;
+        this.scriptService = scriptService;
         this.scripts = [
             { title: 'Evidence', shortCut: 'CTRL+NUM1', color: 'lighterBlue' },
             { title: 'Evidence2', shortCut: 'CTRL+NUM2' },
             { title: 'Evidence3', shortCut: 'CTRL+NUM3' },
             { title: 'Evidence4', shortCut: 'CTRL+NUM4' }
         ];
-        this.name = 'Angular';
+        this.name = this.scriptService.value;
     }
     TilesComponent.prototype.onClick = function () {
+        this.scriptService.value++;
         this.scripts.push({ title: 'Evidence', shortCut: 'CTRL+NUM1' });
     };
     TilesComponent.prototype.switchToEditMode = function () {
@@ -34,6 +37,7 @@ TilesComponent = __decorate([
     core_1.Component({
         templateUrl: 'views/tiles.html',
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router,
+        script_service_1.ScriptService])
 ], TilesComponent);
 exports.TilesComponent = TilesComponent;

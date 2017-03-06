@@ -11,6 +11,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var tiles_component_1 = require("./tiles.component");
 var app_component_1 = require("./app.component");
 var edit_component_1 = require("./edit.component");
+var script_service_1 = require("./script.service");
 var router_1 = require("@angular/router");
 var appRoutes = [
     { path: 'edit', component: edit_component_1.EditComponent },
@@ -24,6 +25,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(appRoutes)],
+        providers: [script_service_1.ScriptService],
         declarations: [app_component_1.AppComponent, tiles_component_1.TilesComponent, edit_component_1.EditComponent],
         bootstrap: [app_component_1.AppComponent]
     })

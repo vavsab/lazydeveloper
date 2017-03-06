@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: 'views/app.html',
 })
 
-export class AppComponent {}
+export class AppComponent {
+  constructor () {}
+}
