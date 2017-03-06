@@ -11,18 +11,10 @@ export class TilesComponent  {
     private router: Router,
     private scriptService: ScriptService) {}
 
-  scripts = [
-    { title: 'Evidence', shortCut: 'CTRL+NUM1', color: 'lighterBlue' },
-    { title: 'Evidence2', shortCut: 'CTRL+NUM2' },
-    { title: 'Evidence3', shortCut: 'CTRL+NUM3' },
-    { title: 'Evidence4', shortCut: 'CTRL+NUM4' }
-  ];
-
-  name = this.scriptService.value; 
+  scripts = this.scriptService.scripts;
 
   onClick() {
-    this.scriptService.value++;
-    this.scripts.push({ title: 'Evidence', shortCut: 'CTRL+NUM1' });
+    this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen' });
   }
 
   switchToEditMode() {

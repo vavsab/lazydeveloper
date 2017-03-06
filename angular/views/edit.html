@@ -1,24 +1,31 @@
-<div class="row top5">
-    <button class="button success" (click)="save()">Save</button>
-    <button class="button danger" (click)="cancel()">Cancel</button>
-    Edit Page {{name}} 
-</div>
+<div class="grid"> 
+    <div class="row">
+        <button class="button success" (click)="save()">Save</button>
+        <button class="button danger" (click)="cancel()">Cancel</button>
+        Edit Page {{name}} 
+    </div>
 
-<div class="row top5">
-    <div class="listview-outlook" data-role="listview">
-        <div class="list marked">
-            <div class="list-content">
-                <span class="list-title">...list title...</span>
-                <span class="list-subtitle">...list subtitle...</span>
-                <span class="list-remark">...list remark...</span>
+    <div class="row cells3">
+        <div class="cell">
+            <div class="listview-outlook" data-role="listview">
+                <div [ngClass]="{'list': true, 'marked': selectedScript == script}" *ngFor="let script of scripts" 
+                    (click)="selectScript(script)">
+                    <div class="list-content">
+                        <span class="list-title">{{script.title}}</span>
+                        <span class="list-subtitle">Shortcut: {{script.shortcut}}</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="list">
-            <div class="list-content">
-                <span class="list-title">...list title...</span>
-                <span class="list-subtitle">...list subtitle...</span>
-                <span class="list-remark">...list remark...</span>
-            </div>
+        
+        <div class="cell colspan2">
+            <form [hidden]="selectedScript == null">
+                <label for="shortcut">Shortcut:</label>
+                <input type="text" id="shortcut" value="{{selectedScript != null ? selectedScript.shortcut : 'none'}}">
+            </form>
+            
+            <div ace-editor></div>
+            {{selectedScript ? 'Ace editor' : 'Select script to edit it'}}
         </div>
     </div>
 </div>

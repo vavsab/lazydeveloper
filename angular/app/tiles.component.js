@@ -16,17 +16,10 @@ var TilesComponent = (function () {
     function TilesComponent(router, scriptService) {
         this.router = router;
         this.scriptService = scriptService;
-        this.scripts = [
-            { title: 'Evidence', shortCut: 'CTRL+NUM1', color: 'lighterBlue' },
-            { title: 'Evidence2', shortCut: 'CTRL+NUM2' },
-            { title: 'Evidence3', shortCut: 'CTRL+NUM3' },
-            { title: 'Evidence4', shortCut: 'CTRL+NUM4' }
-        ];
-        this.name = this.scriptService.value;
+        this.scripts = this.scriptService.scripts;
     }
     TilesComponent.prototype.onClick = function () {
-        this.scriptService.value++;
-        this.scripts.push({ title: 'Evidence', shortCut: 'CTRL+NUM1' });
+        this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen' });
     };
     TilesComponent.prototype.switchToEditMode = function () {
         this.router.navigate(['edit']);

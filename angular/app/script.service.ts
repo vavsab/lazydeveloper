@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ScriptService {
-    private _value: number = 5;
+    private _scripts = [
+        { title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'lighterBlue' },
+        { title: 'Evidence2', shortcut: 'CTRL+NUM2', color: 'darkRed' },
+        { title: 'Evidence3', shortcut: 'CTRL+NUM3', color: 'green' },
+        { title: 'Evidence4', shortcut: 'CTRL+NUM4', color: 'brown' }
+    ];
 
-    get value(): number {
-        return this._value;
+    get scripts(): any {
+        return this._scripts;
     }
 
-    set value(value: number) {
-        this._value = value;
+    set scripts(value: any) {
+        this._scripts = value;
     }
 }

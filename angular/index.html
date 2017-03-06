@@ -15,6 +15,7 @@
 
     <script src="systemjs.config.js"></script>
     <script>
+      System.import('ng2-ace-editor');
       System.import('libs/jquery').then(function (jquery) {
         window.$ = window.jQuery = jquery;
         System.import('libs/metro');

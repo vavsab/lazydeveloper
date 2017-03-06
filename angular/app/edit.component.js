@@ -16,10 +16,14 @@ var EditComponent = (function () {
     function EditComponent(router, scriptService) {
         this.router = router;
         this.scriptService = scriptService;
-        this.name = this.scriptService.value;
+        this.scripts = this.scriptService.scripts;
+        this.selectedScript = null;
     }
     EditComponent.prototype.save = function () {
         this.router.navigate(['/']);
+    };
+    EditComponent.prototype.selectScript = function (script) {
+        this.selectedScript = script;
     };
     return EditComponent;
 }());

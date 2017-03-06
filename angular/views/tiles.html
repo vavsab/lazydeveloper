@@ -1,34 +1,14 @@
-Value = {{name}}
 <div class="row top5">
     <button class="button primary" (click)="switchToEditMode()"><span class="fa fa-pencil"></span> Switch to edit mode</button>
 </div>
 <div class="row tile-area no-padding top5 fg-white">
     <div class="tile-container">
-        <div class="tile-large {{'bg-' + script.color}}" data-role="tile" (click)="onClick()" *ngFor="let script of scripts">
+        <div class="tile-wide {{'bg-' + script.color}}" data-role="tile" (click)="onClick()" *ngFor="let script of scripts">
             <div class="tile-content iconic">
                 <span class="icon fa fa-pencil"></span>
             </div>
             <span class="tile-label fg-white">{{script.title}}</span>
+            <span class="tile-badge bg-darkRed">{{script.shortcut}}</span>
         </div>
-        <!--<div class="tile-wide bg-cobalt" data-role="tile">
-            <div class="tile-content iconic">
-                <span class="icon mif-envelop"></span>
-                <span class="tile-badge bg-darkRed">Ctrl+Num1</span>
-                <span class="tile-label fg-white">Evidence 3.0</span>
-            </div>
-        </div>
-        <div class="tile-wide bg-cobalt" data-role="tile">
-            <div class="tile-content iconic">
-                <span class="icon mif-envelop"></span>
-                <span class="tile-badge bg-darkRed">Ctrl+Num2</span>
-                <span class="tile-label">WCF services 3.0</span>
-            </div>
-        </div>
-        <div class="tile-square bg-cobalt" data-role="tile"></div>
-        <div class="tile-small bg-red" data-role="tile"></div>
-        <div class="tile-small bg-orange" data-role="tile"></div>
-        <div class="tile-small bg-green" data-role="tile"></div>
-        <div class="tile-small bg-pink" data-role="tile"></div>
-        <div class="tile-wide bg-lightGreen" data-role="tile"></div>-->
     </div>
 </div>

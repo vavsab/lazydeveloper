@@ -9,15 +9,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ScriptService = (function () {
     function ScriptService() {
-        this._value = 5;
+        this._scripts = [
+            { title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'lighterBlue' },
+            { title: 'Evidence2', shortcut: 'CTRL+NUM2', color: 'darkRed' },
+            { title: 'Evidence3', shortcut: 'CTRL+NUM3', color: 'green' },
+            { title: 'Evidence4', shortcut: 'CTRL+NUM4', color: 'brown' }
+        ];
     }
-    Object.defineProperty(ScriptService.prototype, "value", {
+    Object.defineProperty(ScriptService.prototype, "scripts", {
         get: function () {
-            alert(this._value);
-            return this._value;
+            return this._scripts;
         },
         set: function (value) {
-            this._value = value;
+            this._scripts = value;
         },
         enumerable: true,
         configurable: true

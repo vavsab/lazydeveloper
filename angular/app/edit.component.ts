@@ -11,9 +11,15 @@ export class EditComponent {
         private router: Router,
         private scriptService: ScriptService) {}
 
-    name = this.scriptService.value;
+    scripts = this.scriptService.scripts;
+
+    selectedScript: any = null;
 
     save() {
         this.router.navigate(['/']);
+    }
+
+    selectScript(script: any) {
+        this.selectedScript = script;
     }
 }
