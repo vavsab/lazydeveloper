@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
 var tiles_component_1 = require("./tiles.component");
 var app_component_1 = require("./app.component");
 var edit_component_1 = require("./edit.component");
 var script_service_1 = require("./script.service");
 var router_1 = require("@angular/router");
-var ng2_ace_editor_1 = require("ng2-ace-editor");
 var appRoutes = [
     { path: 'edit', component: edit_component_1.EditComponent },
     { path: '**', component: tiles_component_1.TilesComponent }
@@ -25,7 +25,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(appRoutes), ng2_ace_editor_1.AceEditorDirective, ng2_ace_editor_1.AceEditorComponent],
+        imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(appRoutes), forms_1.FormsModule],
         providers: [script_service_1.ScriptService],
         declarations: [app_component_1.AppComponent, tiles_component_1.TilesComponent, edit_component_1.EditComponent],
         bootstrap: [app_component_1.AppComponent]

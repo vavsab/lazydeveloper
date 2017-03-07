@@ -14,7 +14,7 @@ export class TilesComponent  {
   scripts = this.scriptService.scripts;
 
   onClick() {
-    this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen' });
+    this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen', content: 'New' });
   }
 
   switchToEditMode() {

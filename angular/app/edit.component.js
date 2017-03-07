@@ -20,6 +20,7 @@ var EditComponent = (function () {
         this.selectedScript = null;
     }
     EditComponent.prototype.save = function () {
+        this.scriptService.save();
         this.router.navigate(['/']);
     };
     EditComponent.prototype.selectScript = function (script) {

@@ -19,7 +19,7 @@ var TilesComponent = (function () {
         this.scripts = this.scriptService.scripts;
     }
     TilesComponent.prototype.onClick = function () {
-        this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen' });
+        this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen', content: 'New' });
     };
     TilesComponent.prototype.switchToEditMode = function () {
         this.router.navigate(['edit']);

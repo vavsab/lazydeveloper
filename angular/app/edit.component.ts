@@ -16,6 +16,7 @@ export class EditComponent {
     selectedScript: any = null;
 
     save() {
+        this.scriptService.save();
         this.router.navigate(['/']);
     }
 

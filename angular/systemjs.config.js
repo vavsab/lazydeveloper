@@ -23,8 +23,8 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
-      
-      'ng2-ace-editor': 'npm:ng2-ace-editor/ng2-ace-editor.js',
+
+      'fs': '@node/fs',
 
       // other libraries
       'rxjs':                      'npm:rxjs',

@@ -19,13 +19,19 @@
         </div>
         
         <div class="cell colspan2">
-            <form [hidden]="selectedScript == null">
+            <form *ngIf="selectedScript != null">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" [(ngModel)]="selectedScript.title">
+                <br />
+
                 <label for="shortcut">Shortcut:</label>
-                <input type="text" id="shortcut" value="{{selectedScript != null ? selectedScript.shortcut : 'none'}}">
+                <input type="text" name="shortcut" id="shortcut" [(ngModel)]="selectedScript.shortcut">
+
+                <br />
+                <label for="editor">Script:</label>
+                <br />
+                <textarea id="editor" name="editor" [(ngModel)]="selectedScript.content"></textarea>
             </form>
-            
-            <div ace-editor></div>
-            {{selectedScript ? 'Ace editor' : 'Select script to edit it'}}
         </div>
     </div>
 </div>
