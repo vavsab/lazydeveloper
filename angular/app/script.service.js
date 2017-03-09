@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var script_1 = require("./script");
 var fs = require('fs');
+var electron = require('electron');
 var filePath = 'settings.json';
 var scriptsFolderPath = 'generatedScripts';
 var ScriptService = (function () {
@@ -31,6 +32,7 @@ var ScriptService = (function () {
         catch (e) {
             alert('Could not parse settings. Error: ' + e.toString());
         }
+        electron.ipcRenderer.on('info', function (event, data) { console.log(data.msg); });
     }
     Object.defineProperty(ScriptService.prototype, "scripts", {
         get: function () {

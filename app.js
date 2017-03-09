@@ -1,4 +1,4 @@
-const {app, BrowserWindow, protocol} = require('electron')
+const {app, BrowserWindow, protocol, globalShortcut} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -9,6 +9,10 @@ let win
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({width: 800, height: 600})
+
+  const ret = globalShortcut.register('CommandOrControl+1', () => {
+    win.webContents.send('info' , { msg:'hello from main process' });
+  });
 
   // and load the index.html of the app.
   win.loadURL(url.format({

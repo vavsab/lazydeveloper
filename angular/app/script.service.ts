@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Script } from './script';
 
 const fs = require('fs');
+const electron = require('electron');
+
 const filePath: string = 'settings.json';
 const scriptsFolderPath: string = 'generatedScripts';
 
@@ -23,6 +25,8 @@ export class ScriptService {
         } catch (e) {
             alert('Could not parse settings. Error: ' + e.toString());
         }
+
+        electron.ipcRenderer.on('info', (event: any, data: any) => { console.log(data.msg) });
     }
     
     get scripts(): Array<Script> {

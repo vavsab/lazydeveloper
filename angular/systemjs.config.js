@@ -26,7 +26,7 @@
 
       'fs': '@node/fs',
       'child_process': '@node/child_process',
-      'shelljs' : '@node/shelljs',
+      'electron': '@node/electron',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
