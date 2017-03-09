@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScriptService } from './script.service';
+import { Script } from './script';
 
 @Component ({
     templateUrl: 'views/edit.html'
@@ -11,16 +12,24 @@ export class EditComponent {
         private router: Router,
         private scriptService: ScriptService) {}
 
-    scripts = this.scriptService.scripts;
+    scripts: Array<Script> = JSON.parse(JSON.stringify(this.scriptService.scripts));
 
-    selectedScript: any = null;
+    selectedScript: Script = null;
 
     save() {
-        this.scriptService.save();
+        this.scriptService.save(this.scripts);
         this.router.navigate(['/']);
     }
 
-    selectScript(script: any) {
+    cancel() {
+        this.router.navigate(['/']);
+    }
+
+    selectScript(script: Script) {
         this.selectedScript = script;
+    }
+
+    addScript() {
+        this.scripts.push({ title: 'New script', shortcut: '', color: 'darkGreen', content: '' });
     }
 }

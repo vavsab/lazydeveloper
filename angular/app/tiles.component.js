@@ -12,17 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var script_service_1 = require("./script.service");
+var spawn = require('child_process').spawn;
 var TilesComponent = (function () {
     function TilesComponent(router, scriptService) {
         this.router = router;
         this.scriptService = scriptService;
         this.scripts = this.scriptService.scripts;
     }
-    TilesComponent.prototype.onClick = function () {
-        this.scriptService.scripts.push({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'darkGreen', content: 'New' });
-    };
     TilesComponent.prototype.switchToEditMode = function () {
         this.router.navigate(['edit']);
+    };
+    TilesComponent.prototype.run = function (script) {
+        var bat = spawn("\"generatedScripts\\" + script.title + ".bat\"", { shell: true });
+        bat.stdout.on('data', function (data) {
+            console.log(data.toString());
+        });
+        bat.stderr.on('data', function (data) {
+            console.log(data.toString());
+        });
+        bat.on('exit', function (code) {
+            console.log("Child exited with code " + code);
+        });
     };
     return TilesComponent;
 }());

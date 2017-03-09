@@ -1,26 +1,48 @@
 import { Injectable } from '@angular/core';
-import fs from 'fs';
-https://github.com/systemjs/systemjs/issues/1261
+import { Script } from './script';
+
+const fs = require('fs');
+const filePath: string = 'settings.json';
+const scriptsFolderPath: string = 'generatedScripts';
 
 @Injectable()
 export class ScriptService {
-    private _scripts = [
-        { title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'lighterBlue', content: 'A' },
-        { title: 'Evidence2', shortcut: 'CTRL+NUM2', color: 'darkRed', content: 'B' },
-        { title: 'Evidence3', shortcut: 'CTRL+NUM3', color: 'green', content: 'C' },
-        { title: 'Evidence4', shortcut: 'CTRL+NUM4', color: 'brown', content: 'D' }
+    private _scripts: Array<Script> = [
+        new Script ({ title: 'Evidence', shortcut: 'CTRL+NUM1', color: 'lighterBlue', content: 'A' }),
+        new Script ({ title: 'Evidence2', shortcut: 'CTRL+NUM1', color: 'darkRed', content: 'B' }),
+        new Script ({ title: 'Evidence3', shortcut: 'CTRL+NUM1', color: 'green', content: 'C' }),
+        new Script ({ title: 'Evidence4', shortcut: 'CTRL+NUM1', color: 'brown', content: 'D' }),
+        new Script ({ title: 'Evidence5', shortcut: 'CTRL+NUM1', color: 'darkGreen', content: 'E' })
     ];
 
-    get scripts(): any {
+    constructor () {
+        try {
+            if (fs.existsSync(filePath)) {
+                this._scripts = JSON.parse(fs.readFileSync(filePath));
+            }
+        } catch (e) {
+            alert('Could not parse settings. Error: ' + e.toString());
+        }
+    }
+    
+    get scripts(): Array<Script> {
         return this._scripts;
     }
 
-    set scripts(value: any) {
+    set scripts(value: Array<Script>) {
         this._scripts = value;
     }
 
-    save() {
-        console.log(fs);
-        //electron.remote.require('dialog').showErrorBox('My message', 'hi.');
+    save(scripts: Array<Script>) {
+        this._scripts = scripts;
+        fs.writeFileSync('settings.json', JSON.stringify(this._scripts));
+
+        if (!fs.existsSync(scriptsFolderPath)) {
+            fs.mkdirSync(scriptsFolderPath);
+        }
+        
+        scripts.forEach(script => {
+            fs.writeFileSync(`${scriptsFolderPath}/${script.title}.bat`, script.content);
+        });
     }
 }

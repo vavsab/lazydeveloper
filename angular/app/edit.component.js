@@ -16,15 +16,21 @@ var EditComponent = (function () {
     function EditComponent(router, scriptService) {
         this.router = router;
         this.scriptService = scriptService;
-        this.scripts = this.scriptService.scripts;
+        this.scripts = JSON.parse(JSON.stringify(this.scriptService.scripts));
         this.selectedScript = null;
     }
     EditComponent.prototype.save = function () {
-        this.scriptService.save();
+        this.scriptService.save(this.scripts);
+        this.router.navigate(['/']);
+    };
+    EditComponent.prototype.cancel = function () {
         this.router.navigate(['/']);
     };
     EditComponent.prototype.selectScript = function (script) {
         this.selectedScript = script;
+    };
+    EditComponent.prototype.addScript = function () {
+        this.scripts.push({ title: 'New script', shortcut: '', color: 'darkGreen', content: '' });
     };
     return EditComponent;
 }());

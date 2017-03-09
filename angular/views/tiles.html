@@ -3,7 +3,8 @@
 </div>
 <div class="row tile-area no-padding top5 fg-white">
     <div class="tile-container">
-        <div class="tile-wide {{'bg-' + script.color}}" data-role="tile" (click)="onClick()" *ngFor="let script of scripts">
+        <div class="tile-wide {{'bg-' + script.color}}" data-role="tile" *ngFor="let script of scripts"
+            (click)="run(script)">
             <div class="tile-content iconic">
                 <span class="icon fa fa-pencil"></span>
             </div>
